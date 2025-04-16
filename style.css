@@ -1,6 +1,11 @@
 body {
     background-color: #176032;
     color: #fff !important;
+    overflow-x: hidden !important;
+}
+
+head,
+body {
     overflow-x: hidden;
 }
 
@@ -167,18 +172,18 @@ ul {
 }
 
 #toggleIcon {
-    height: 100vh;
+    height: 100vh !important;
     position: fixed;
     top: 0px;
     right: 0px;
     z-index: 999;
     background-color: #fff;
-    /* border-left: 2px solid #000; */
     width: 300px;
     padding: 20px 5px;
-    transform: translateX(100%);
+    margin-bottom: 0px !important;
+    transform: translateX(200%);
     transition: all 0.4s ease-in-out;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 
     #title {
         padding: 20px 25px;
@@ -228,19 +233,23 @@ ul {
     }
 
     #toggleButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         button {
             background-color: transparent;
-            border: 1px solid #fff;
-            color: #fff;
+            border: 1px solid #000 !important;
+            color: #000 !important;
             border-radius: 6px;
             padding: 8px 20px;
             margin-right: 5px;
-            /* margin-bottom: 0px; */
+            margin-top: 5px;
         }
 
         #toggleSignUP {
-            background-color: #fff !important;
-            color: #000 !important;
+            background-color: #000 !important;
+            color: #fff !important;
         }
     }
 
@@ -251,7 +260,7 @@ ul {
 }
 
 .bodyToggle {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 
 .bodyToggle::-webkit-scrollbar {
@@ -312,4 +321,9 @@ ul {
         }
     }
 
+}
+
+.active {
+    color: #176032 !important;
+    font-weight: 700 !important;
 }

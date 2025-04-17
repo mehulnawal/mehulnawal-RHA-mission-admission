@@ -273,13 +273,31 @@ ul {
 }
 
 .noOfStdBox {
-    border: none;
+    border: 1.5px solid #000;
     border-radius: 20px;
-    background-color: #3498DB;
-    color: #fff;
+    background-color: transparent;
+    color: #000;
     padding: 5px 10px;
     margin-bottom: 20px;
     font-size: 14px;
+}
+
+.noOfStdBox.active {
+    background-color: #176032;
+    color: #fff !important;
+    border: none !important;
+}
+
+#std2,
+#std3,
+#std4,
+#std5,
+#std6,
+#std7,
+#std8,
+#std9,
+#std10 {
+    display: none;
 }
 
 #studentForms {
@@ -320,10 +338,44 @@ ul {
     }
 }
 
-@media (max-width:767px) {
+@media (min-width: 768px) {
+    .student-boxes-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .noOfStdBox {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width:767.98px) {
     #monal {
         height: 100% !important;
         width: 100% !important;
+    }
+
+    .card {
+        padding: 15px !important;
+    }
+
+    /* Mobile-optimized dropdown */
+    .noOfStdDropdown {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    .noOfStdDropdown select {
+        width: 100% !important;
+        margin-top: 8px;
+    }
+
+    /* Mobile-optimized student boxes */
+    .student-boxes-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }
 

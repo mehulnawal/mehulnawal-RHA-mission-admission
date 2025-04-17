@@ -12,70 +12,7 @@
     <!-- Font Awesome Pro -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
 
-    <style>
-        /* Custom CSS */
-        @media (max-width: 767.98px) {
-            .container {
-                padding-left: 10px;
-                padding-right: 10px;
-                max-width: 100%;
-            }
-
-            .card {
-                padding: 15px !important;
-            }
-
-            /* Mobile-optimized dropdown */
-            .noOfStdDropdown {
-                flex-direction: column;
-                align-items: flex-start !important;
-            }
-
-            .noOfStdDropdown select {
-                width: 100% !important;
-                margin-top: 8px;
-            }
-
-            /* Mobile-optimized student boxes */
-            .student-boxes-container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-        }
-
-        /* Responsive student boxes for larger screens */
-        @media (min-width: 768px) {
-            .student-boxes-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .noOfStdBox {
-                margin-bottom: 10px;
-            }
-        }
-
-        /* Base styles */
-        .noOfStdBox {
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px 15px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .noOfStdBox:hover {
-            background-color: #e0e0e0;
-        }
-
-        .noOfStdBox.active {
-            background-color: #007bff;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -86,7 +23,7 @@
             <!-- Number of Students Dropdown -->
             <div class="mb-4 noOfStdDropdown d-flex align-items-center gap-3">
                 <label for="studentCount" class="form-label fw-semibold">Number of Students:</label>
-                <select id="studentCount" class="form-select">
+                <select class="form-select" id="studentCount">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -456,7 +393,7 @@
 
             <!-- previous and next -->
             <div class="d-flex justify-content-between">
-                <button class="btn btn-danger">Previous</button>
+                <button class="btn btn-danger" id="">Previous</button>
                 <button class="btn btn-success">Next</button>
             </div>
 
@@ -468,11 +405,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom js -->
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Student boxes functionality
             const studentBoxes = document.querySelectorAll('.noOfStdBox');
@@ -977,213 +911,12 @@
             updateStatusHeading();
             showCurrentStudentForm();
         });
-    </script>
-
+    </script> -->
+    <!-- 
     <script>
-        const stateCityMap = {
-            Gujarat: ['Surat', 'Ahmedabad', 'Vadodara'],
-            Maharashtra: ['Mumbai', 'Pune', 'Nagpur'],
-            Rajasthan: ['Jaipur', 'Udaipur', 'Jodhpur']
-        };
+    </script> -->
 
-        const studentContainer = document.getElementById("students-container");
-        const numStudentsSelect = document.getElementById("num-students");
-        const prevBtn = document.getElementById("prev-btn");
-        const nextBtn = document.getElementById("next-btn");
-        const resetBtn = document.getElementById("reset-all-btn");
-        const submitBtn = document.getElementById("submit-all-btn");
-
-        let currentStudentIndex = 0;
-        let studentForms = [];
-
-        numStudentsSelect.addEventListener("change", () => {
-            const num = parseInt(numStudentsSelect.value);
-            studentForms = [];
-            studentContainer.innerHTML = "";
-            for (let i = 0; i < num; i++) {
-                const form = createStudentForm(i);
-                studentForms.push(form);
-                studentContainer.appendChild(form);
-            }
-            showForm(0);
-            updateNavButtons();
-        });
-
-        function createStudentForm(index) {
-            const div = document.createElement("div");
-            div.className = "student-form";
-            div.dataset.index = index;
-            div.innerHTML = `
-            <h3>Student ${index + 1}</h3>
-            <input type="text" placeholder="First Name" class="first-name" />
-            <input type="text" placeholder="Last Name" class="last-name" />
-            <input type="email" placeholder="Email" class="email" />
-            <input type="text" placeholder="Phone (10-digit)" class="phone" />
-            <input type="text" placeholder="Address" class="address" />
-            
-            <select class="state">
-                <option value="">Select State</option>
-                ${Object.keys(stateCityMap).map(state => `<option value="${state}">${state}</option>`).join('')}
-            </select>
-
-            <select class="city">
-                <option value="">Select City</option>
-            </select>
-
-            <input type="text" placeholder="PIN Code (6-digit)" class="pin" />
-        `;
-
-            // Populate city dropdown when state changes
-            const stateSelect = div.querySelector(".state");
-            const citySelect = div.querySelector(".city");
-
-            stateSelect.addEventListener("change", () => {
-                const cities = stateCityMap[stateSelect.value] || [];
-                citySelect.innerHTML = `<option value="">Select City</option>`;
-                cities.forEach(city => {
-                    const opt = document.createElement("option");
-                    opt.value = city;
-                    opt.textContent = city;
-                    citySelect.appendChild(opt);
-                });
-            });
-
-            // Add dynamic validation on inputs
-            addDynamicValidation(div);
-
-            return div;
-        }
-
-        function addDynamicValidation(form) {
-            const inputs = form.querySelectorAll("input, select");
-
-            inputs.forEach(input => {
-                input.addEventListener("input", () => {
-                    validateForm(form.dataset.index);
-                    updateNavButtons();
-                });
-            });
-        }
-
-        function showForm(index) {
-            studentForms.forEach((form, i) => {
-                form.style.display = i === index ? "block" : "none";
-            });
-            currentStudentIndex = index;
-            updateNavButtons();
-        }
-
-        function updateNavButtons() {
-            prevBtn.disabled = currentStudentIndex === 0;
-            nextBtn.disabled = !validateForm(currentStudentIndex) || currentStudentIndex === studentForms.length - 1;
-        }
-
-        prevBtn.addEventListener("click", () => {
-            if (currentStudentIndex > 0) {
-                showForm(currentStudentIndex - 1);
-            }
-        });
-
-        nextBtn.addEventListener("click", () => {
-            if (validateForm(currentStudentIndex)) {
-                if (currentStudentIndex < studentForms.length - 1) {
-                    showForm(currentStudentIndex + 1);
-                }
-            }
-        });
-
-        resetBtn.addEventListener("click", () => {
-            studentContainer.innerHTML = "";
-            studentForms = [];
-            numStudentsSelect.value = "";
-            currentStudentIndex = 0;
-        });
-
-        submitBtn.addEventListener("click", () => {
-            const allData = [];
-            for (let i = 0; i < studentForms.length; i++) {
-                if (!validateForm(i)) {
-                    showForm(i);
-                    return;
-                }
-                const form = studentForms[i];
-                allData.push({
-                    firstName: form.querySelector(".first-name").value.trim(),
-                    lastName: form.querySelector(".last-name").value.trim(),
-                    email: form.querySelector(".email").value.trim(),
-                    phone: form.querySelector(".phone").value.trim(),
-                    address: form.querySelector(".address").value.trim(),
-                    state: form.querySelector(".state").value,
-                    city: form.querySelector(".city").value,
-                    pin: form.querySelector(".pin").value.trim()
-                });
-            }
-            console.log("All Students' Data:", allData);
-            alert("All forms submitted successfully!");
-        });
-
-        function validateForm(index) {
-            const form = studentForms[index];
-            const firstName = form.querySelector(".first-name").value.trim();
-            const lastName = form.querySelector(".last-name").value.trim();
-            const email = form.querySelector(".email").value.trim();
-            const phone = form.querySelector(".phone").value.trim();
-            const address = form.querySelector(".address").value.trim();
-            const state = form.querySelector(".state").value;
-            const city = form.querySelector(".city").value;
-            const pin = form.querySelector(".pin").value.trim();
-
-            let isValid = true;
-
-            // Clear previous errors
-            form.querySelectorAll('.error').forEach(err => err.remove());
-
-            // Validate fields
-            if (!/^[A-Za-z]{2,}$/.test(firstName)) {
-                showError(form, '.first-name', 'Enter a valid first name');
-                isValid = false;
-            }
-            if (!/^[A-Za-z]{2,}$/.test(lastName)) {
-                showError(form, '.last-name', 'Enter a valid last name');
-                isValid = false;
-            }
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                showError(form, '.email', 'Enter a valid email');
-                isValid = false;
-            }
-            if (!/^\d{10}$/.test(phone)) {
-                showError(form, '.phone', 'Enter a valid 10-digit phone number');
-                isValid = false;
-            }
-            if (address.length < 5) {
-                showError(form, '.address', 'Enter a valid address');
-                isValid = false;
-            }
-            if (!state) {
-                showError(form, '.state', 'Select a state');
-                isValid = false;
-            }
-            if (!city) {
-                showError(form, '.city', 'Select a city');
-                isValid = false;
-            }
-            if (!/^\d{6}$/.test(pin)) {
-                showError(form, '.pin', 'Enter a valid 6-digit PIN');
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        function showError(form, fieldSelector, message) {
-            const field = form.querySelector(fieldSelector);
-            const error = document.createElement('span');
-            error.className = 'error';
-            error.style.color = 'red';
-            error.textContent = message;
-            field.insertAdjacentElement('afterend', error);
-        }
-    </script>
+    <script src="./formScript.js"></script>
 
 </body>
 

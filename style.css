@@ -267,6 +267,52 @@ ul {
     width: 0px !important;
 }
 
+.noOfStdDropdown {
+    border-bottom: 1px solid #000;
+    padding-bottom: 30px;
+}
+
+.noOfStdBox {
+    border: none;
+    border-radius: 20px;
+    background-color: #3498DB;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+#studentForms {
+    background-color: #fff;
+    height: fit-content;
+    color: #000;
+    border-left: 5px solid #3498DB;
+    border-radius: 10px;
+    margin-bottom: 30px;
+
+    h1,
+    p {
+        text-align: center;
+        /* margin-top: 30px; */
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+
+    #studentList {
+        color: #7F8C8D;
+    }
+
+    #formDiv {
+        background-color: #F9F9F9;
+        padding: 35px 20px;
+        border-radius: 10px;
+        border-left: 5px solid #3498DB;
+    }
+}
+
 @media (max-width:991px) {
 
     #toggleIcon {

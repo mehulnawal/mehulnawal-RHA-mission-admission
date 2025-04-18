@@ -1,7 +1,6 @@
 body {
     background-color: #176032;
     color: #fff !important;
-    overflow-x: hidden !important;
 }
 
 a {
@@ -33,16 +32,15 @@ ul {
         align-items: center;
         width: 100%;
         gap: 30px;
-        position: relative;
 
         #menu-icon {
+            /* display: none; */
             font-size: 30px;
             cursor: pointer;
-            color: white;
         }
 
         #buttons {
-            button {
+            a {
                 background-color: transparent;
                 border: 1px solid #fff;
                 color: #fff;
@@ -162,7 +160,7 @@ ul {
     margin-bottom: 0px !important;
     transform: translateX(200%);
     transition: all 0.4s ease-in-out;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 
     #title {
         padding: 20px 25px;
@@ -216,7 +214,7 @@ ul {
         align-items: center;
         justify-content: center;
 
-        button {
+        a {
             background-color: transparent;
             border: 1px solid #000 !important;
             color: #000 !important;
@@ -238,13 +236,13 @@ ul {
     transform: translateX(0%) !important;
 }
 
-/* .bodyToggle {
+.bodyToggle {
     overflow: hidden !important;
-} */
+}
 
-/* .bodyToggle::-webkit-scrollbar {
+.bodyToggle::-webkit-scrollbar {
     width: 0px !important;
-} */
+}
 
 .noOfStdDropdown {
     border-bottom: 1px solid #000;
@@ -441,36 +439,6 @@ ul {
 
     .noOfStdBox {
         margin-bottom: 10px;
-    }
-
-    #nav-right {
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #176032;
-        padding: 10px;
-        border-radius: 8px;
-        gap: 10px;
-    }
-
-    .nav-menu.show {
-        display: flex;
-    }
-
-    #menu-icon {
-        display: block;
-    }
-
-    #buttons button {
-        width: 100px;
-        padding: 10px;
     }
 }
 

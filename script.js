@@ -5,11 +5,11 @@ let body = document.getElementsByTagName("body");
 
 menuIcon.addEventListener("click", function () {
     toggleIcon.classList.add("toggleIcon-Toggle");
-    // body.classList.add("bodyToggle")
+    body.classList.add("bodyToggle")
 
 });
 
 faXmark.addEventListener("click", function () {
     toggleIcon.classList.remove("toggleIcon-Toggle");
-    // body.classList.remove("bodyToggle")
+    body.classList.remove("bodyToggle")
 });

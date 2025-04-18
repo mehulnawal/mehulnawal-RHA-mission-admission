@@ -4,11 +4,6 @@ body {
     overflow-x: hidden !important;
 }
 
-head,
-body {
-    overflow-x: hidden;
-}
-
 a {
     text-decoration: none;
 }
@@ -38,29 +33,12 @@ ul {
         align-items: center;
         width: 100%;
         gap: 30px;
-
-        ul {
-            display: flex;
-            justify-content: space-around;
-            gap: 30px;
-            align-items: center;
-            margin-bottom: 0px;
-
-            li {
-                position: relative;
-                margin-bottom: 0px;
-
-                a {
-                    color: #fff;
-                    margin-bottom: 0px;
-                }
-            }
-        }
+        position: relative;
 
         #menu-icon {
-            /* display: none; */
             font-size: 30px;
             cursor: pointer;
+            color: white;
         }
 
         #buttons {
@@ -260,13 +238,13 @@ ul {
     transform: translateX(0%) !important;
 }
 
-.bodyToggle {
-    /* overflow: hidden !important; */
-}
+/* .bodyToggle {
+    overflow: hidden !important;
+} */
 
-.bodyToggle::-webkit-scrollbar {
+/* .bodyToggle::-webkit-scrollbar {
     width: 0px !important;
-}
+} */
 
 .noOfStdDropdown {
     border-bottom: 1px solid #000;
@@ -374,7 +352,7 @@ ul {
                     #child_img {
                         width: 100px;
                         position: relative;
-                        margin: 10px 0px;
+                        /* margin: 10px 0px; */
                     }
 
                     #noOfStudents {
@@ -463,6 +441,36 @@ ul {
 
     .noOfStdBox {
         margin-bottom: 10px;
+    }
+
+    #nav-right {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #176032;
+        padding: 10px;
+        border-radius: 8px;
+        gap: 10px;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    #buttons button {
+        width: 100px;
+        padding: 10px;
     }
 }
 
